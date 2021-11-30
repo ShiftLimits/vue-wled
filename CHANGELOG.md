@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 Nothing yet.
 
+## [0.1.3]- 2021-11-29
+Another hotfix for missing files field in package.
+
 ## [0.1.2]- 2021-11-29
 
 ### Changed
