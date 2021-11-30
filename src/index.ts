@@ -9,7 +9,6 @@ export * from './use-wled-client'
 export { CLIENT_KEY } from './constants'
 export function wledClientPlugin(client:WLEDClient):Plugin {
 	const connecting = ref(true)
-	const loading = ref(false)
 
 	const state = reactive<WLEDClientState>(DEFAULT_CLIENT_CONTEXT.state)
 	const info = reactive<WLEDClientInfo>(DEFAULT_CLIENT_CONTEXT.info)
@@ -39,7 +38,6 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 
 	const client_api:VueWLEDClient = {
 		connecting,
-		loading,
 		state,
 		info,
 		effects,
