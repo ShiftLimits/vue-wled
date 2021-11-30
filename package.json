@@ -1,7 +1,9 @@
 {
   "name": "@wled-client/vue",
   "version": "0.1.0",
+  "author": "Jeff Schofield <jeff@jeffschofield.com>",
   "license": "MIT",
+  "keywords": ["vue", "wled", "wled-client"],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
