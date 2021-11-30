@@ -19,7 +19,6 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 	const live = reactive<WLEDClientLive>(DEFAULT_CLIENT_CONTEXT.live)
 
 	client.isReady.then(() => {
-		console.log('READ')
 		deepMerge(state, client.state)
 		deepMerge(info, client.info)
 		deepMerge(effects, client.effects)
