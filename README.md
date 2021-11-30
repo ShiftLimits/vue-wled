@@ -14,7 +14,7 @@ Then in your app, create the WLED Client instance and pass it to the WLED Client
 
 ```js
 const { createApp } = require('vue')
-const { wledClientPlugin } = require('@wled-client/vue')
+const { wledClientPlugin } = require('vue-wled')
 
 const app = createApp(App)
 
