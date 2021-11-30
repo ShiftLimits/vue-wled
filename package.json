@@ -1,6 +1,6 @@
 {
   "name": "vue-wled",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Jeff Schofield <jeff@jeffschofield.com>",
   "license": "MIT",
   "keywords": ["vue", "wled", "wled-client"],
