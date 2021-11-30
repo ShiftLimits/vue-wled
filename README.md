@@ -2,6 +2,8 @@
 
 A Vue 3 plugin to integrate WLED devices with your Vue 3 application.
 
+**Note**: This is under early active development and may be subject to breaking changes until it reaches a stable version **1.0.0**.
+
 ## Installation
 
 Install WLED Client and Vue WLED:
