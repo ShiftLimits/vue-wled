@@ -7,7 +7,7 @@ A Vue 3 plugin to integrate WLED devices with your Vue 3 application.
 Install WLED Client and Vue WLED:
 
 ```bash
-$ npm install wled-client @wled-client/vue
+$ npm install wled-client vue-wled
 ```
 
 Then in your app, create the WLED Client instance and pass it to the WLED Client Vue Plugin:
