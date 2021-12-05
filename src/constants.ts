@@ -4,7 +4,6 @@ export const CLIENT_KEY = Symbol('__WLED_CLIENT__')
 
 export const DEFAULT_CLIENT_CONTEXT:WLEDClientContext = {
 	state: {
-		presetCycle: {},
 		nightlight: {},
 		udpSync: {},
 		segments: []
