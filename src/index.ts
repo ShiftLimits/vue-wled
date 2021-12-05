@@ -45,7 +45,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 		deviceOptions,
 		live,
 		get wsReadyState() { return client!.wsReadyState },
-		isReady:client.isReady,
+		init: client.init.bind(client),
 		refreshContext: client.refreshContext.bind(client),
 		updateState: client.updateState.bind(client),
 		buildStateWithSegments: client.buildStateWithSegments.bind(client),
