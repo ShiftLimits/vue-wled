@@ -3,7 +3,11 @@
   "version": "0.1.3",
   "author": "Jeff Schofield <jeff@jeffschofield.com>",
   "license": "MIT",
-  "keywords": ["vue", "wled", "wled-client"],
+  "keywords": [
+    "vue",
+    "wled",
+    "wled-client"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
