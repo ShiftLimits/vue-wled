@@ -5,7 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-Nothing yet.
+Vue WLED is following along with the changes occurring in WLED Client.
+
+### Added
+- Add `onLiveLEDs` function that will handle listening and relaying the `live:leds` event during the component lifecycle
+
+### Changed
+- **Breaking**: Replaced `isReady` promise with `init()` function that returns a promise
+- **Breaking**: Remove `presetCycle` from default state
 
 ## [0.1.3]- 2021-11-29
 Another hotfix for missing files field in package.
