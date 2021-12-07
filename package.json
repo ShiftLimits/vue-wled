@@ -17,8 +17,7 @@
   "gitHooks": {
     "commit-msg": "node scripts/verifyCommit.js"
   },
-  "dependencies": {
-    "vue": "^3.2.22",
+    "vue": "^3.2.24",
     "wled-client": "^0.12.0-0.4"
   },
   "devDependencies": {
