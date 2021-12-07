@@ -1,5 +1,5 @@
-import { Plugin, reactive, ref } from 'vue'
-import { WLEDClient, WLEDClientDeviceOptions, WLEDClientEffects, WLEDClientInfo, WLEDClientLive, WLEDClientPalettes, WLEDClientPresets, WLEDClientState } from 'wled-client'
+import { onMounted, onUnmounted, Plugin, reactive, ref } from 'vue'
+import { WLEDClient, WLEDClientDeviceOptions, WLEDClientEffects, WLEDClientInfo, WLEDClientLive, WLEDClientLiveLEDs, WLEDClientPalettes, WLEDClientPresets, WLEDClientState } from 'wled-client'
 import { CLIENT_KEY, DEFAULT_CLIENT_CONTEXT } from './constants'
 import { VueWLEDClient } from './types'
 import { deepMerge } from './utils'
@@ -35,6 +35,15 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 	client.on('update:presets', (new_presets) => deepMerge(presets, new_presets))
 	client.on('update:live', (new_live) => deepMerge(live, new_live))
 
+	function onLiveLEDs(callback:(leds:WLEDClientLiveLEDs)=>void) {
+		onMounted(() => {
+			client.on('live:leds', callback)
+		})
+		onUnmounted(() => {
+			client.off('live:leds', callback)
+		})
+	}
+
 	const client_api:VueWLEDClient = {
 		connecting,
 		state,
@@ -44,6 +53,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 		presets,
 		deviceOptions,
 		live,
+		onLiveLEDs,
 		get wsReadyState() { return client!.wsReadyState },
 		init: client.init.bind(client),
 		refreshContext: client.refreshContext.bind(client),
