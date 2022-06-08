@@ -1,6 +1,6 @@
 import { inject } from 'vue'
 import { VueWLEDClient } from './types'
-import { CLIENT_KEY, DEFAULT_CLIENT_CONTEXT } from './constants'
+import { CLIENT_KEY } from './constants'
 
 export function useWLEDClient() {
 	const client = inject<VueWLEDClient>(CLIENT_KEY)
