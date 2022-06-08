@@ -1,5 +1,5 @@
 import { onMounted, onUnmounted, Plugin, reactive, ref } from 'vue'
-import { WLEDClient, WLEDClientDeviceOptions, WLEDClientEffects, WLEDClientInfo, WLEDClientLive, WLEDClientLiveLEDs, WLEDClientPalettes, WLEDClientPresets, WLEDClientState } from 'wled-client'
+import { WLEDClient, WLEDClientConfig, WLEDClientDeviceOptions, WLEDClientEffects, WLEDClientInfo, WLEDClientLive, WLEDClientLiveLEDs, WLEDClientPalettes, WLEDClientPresets, WLEDClientState } from 'wled-client'
 import { CLIENT_KEY, DEFAULT_CLIENT_CONTEXT } from './constants'
 import { VueWLEDClient } from './types'
 import { deepMerge } from './utils'
@@ -17,6 +17,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 	const presets = reactive<WLEDClientPresets>(DEFAULT_CLIENT_CONTEXT.presets)
 	const deviceOptions = reactive<WLEDClientDeviceOptions>(DEFAULT_CLIENT_CONTEXT.deviceOptions)
 	const live = reactive<WLEDClientLive>(DEFAULT_CLIENT_CONTEXT.live)
+	const config = reactive<WLEDClientConfig>(DEFAULT_CLIENT_CONTEXT.config)
 
 	client.on('ready', () => {
 		deepMerge(state, client.state)
@@ -26,6 +27,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 		deepMerge(presets, client.presets)
 		deepMerge(deviceOptions, client.deviceOptions)
 		deepMerge(live, client.live)
+		deepMerge(config, client.config)
 		connecting.value = false
 	})
 	client.on('update:state', (new_state) => deepMerge(state, new_state))
@@ -34,6 +36,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 	client.on('update:palettes', (new_palettes) => deepMerge(palettes, new_palettes))
 	client.on('update:presets', (new_presets) => deepMerge(presets, new_presets))
 	client.on('update:live', (new_live) => deepMerge(live, new_live))
+	client.on('update:config', (new_config) => deepMerge(config, new_config))
 
 	function onLiveLEDs(callback:(leds:WLEDClientLiveLEDs)=>void) {
 		onMounted(() => {
@@ -53,11 +56,14 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 		presets,
 		deviceOptions,
 		live,
+		config,
 		onLiveLEDs,
 		get wsReadyState() { return client!.wsReadyState },
 		init: client.init.bind(client),
 		refreshContext: client.refreshContext.bind(client),
+		refreshConfig: client.refreshConfig.bind(client),
 		updateState: client.updateState.bind(client),
+		updateConfig: client.updateConfig.bind(client),
 		buildStateWithSegments: client.buildStateWithSegments.bind(client),
 		turnOn: client.turnOn.bind(client),
 		turnOff: client.turnOff.bind(client),

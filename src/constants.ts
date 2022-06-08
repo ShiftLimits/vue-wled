@@ -19,5 +19,6 @@ export const DEFAULT_CLIENT_CONTEXT:WLEDClientContext = {
 	deviceOptions: {},
 	live: {
 		leds: false
-	}
+	},
+	config: {}
 }
