@@ -91,6 +91,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 			setTargetBrightness:client.nightlight.setTargetBrightness.bind(client),
 			toggle:client.nightlight.toggle.bind(client)
 		},
+		setCCT:client.setCCT.bind(client),
 		setColor:client.setColor.bind(client),
 		setPrimaryColor:client.setPrimaryColor.bind(client),
 		setSecondaryColor:client.setSecondaryColor.bind(client),
