@@ -6,5 +6,6 @@ export const tsup:Options = {
   sourcemap: true,
 	minify: true,
 	format: ['cjs', 'esm'],
-  entryPoints: ['src/index.ts']
+  entryPoints: ['src/index.ts'],
+	external: ['vue', 'wled-client']
 }
