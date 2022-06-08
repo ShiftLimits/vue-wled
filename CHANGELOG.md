@@ -5,7 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-Vue WLED is following along with the changes occurring in WLED Client.
+
+Nothing yet.
+
+## [0.2.0]- 2022-06-07
+This major updates brings `vue-wled` up to date with WLED v0.13.1 and WLED Client v0.21.0.
 
 ### Added
 - Add `onLiveLEDs` function that will handle listening and relaying the `live:leds` event during the component lifecycle
