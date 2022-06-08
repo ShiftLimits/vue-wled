@@ -8,6 +8,11 @@
     "wled",
     "wled-client"
   ],
+  "repository": "github:ShiftLimits/vue-wled",
+  "bugs": {
+    "url": "https://github.com/ShiftLimits/vue-wled/issues",
+    "email": "jeff@jeffschofield.com"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
