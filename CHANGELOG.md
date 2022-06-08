@@ -9,6 +9,10 @@ Vue WLED is following along with the changes occurring in WLED Client.
 
 ### Added
 - Add `onLiveLEDs` function that will handle listening and relaying the `live:leds` event during the component lifecycle
+- Add support for WLED's new light capabilities api for determining if the device supports RGB, white channel, and CCT values
+- Add `setCCT` function to set the device's color temperature if the device supports it
+- Add major support for getting and setting device configuration variables
+- Add `refreshState`, `refreshInfo`, `refreshEffects`, `refreshPalettes`, and `refreshPresets` functions for manually refreshing the values from the device
 
 ### Changed
 - **Breaking**: Replaced `isReady` promise with `init()` function that returns a promise
