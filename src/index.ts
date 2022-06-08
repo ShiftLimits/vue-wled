@@ -1,5 +1,5 @@
 import { onMounted, onUnmounted, Plugin, reactive, ref } from 'vue'
-import { WLEDClient, WLEDClientConfig, WLEDClientDeviceOptions, WLEDClientEffects, WLEDClientInfo, WLEDClientLive, WLEDClientLiveLEDs, WLEDClientPalettes, WLEDClientPresets, WLEDClientState } from 'wled-client'
+import { WLEDClient, WLEDClientConfig, WLEDClientDeviceOptions, WLEDClientEffects, WLEDClientInfo, WLEDClientLightCapabilities, WLEDClientLive, WLEDClientLiveLEDs, WLEDClientPalettes, WLEDClientPresets, WLEDClientState } from 'wled-client'
 import { CLIENT_KEY, DEFAULT_CLIENT_CONTEXT } from './constants'
 import { VueWLEDClient } from './types'
 import { deepMerge } from './utils'
@@ -16,6 +16,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 	const palettes = reactive<WLEDClientPalettes>(DEFAULT_CLIENT_CONTEXT.palettes)
 	const presets = reactive<WLEDClientPresets>(DEFAULT_CLIENT_CONTEXT.presets)
 	const deviceOptions = reactive<WLEDClientDeviceOptions>(DEFAULT_CLIENT_CONTEXT.deviceOptions)
+	const lightCapabilities = reactive<WLEDClientLightCapabilities>(DEFAULT_CLIENT_CONTEXT.lightCapabilities)
 	const live = reactive<WLEDClientLive>(DEFAULT_CLIENT_CONTEXT.live)
 	const config = reactive<WLEDClientConfig>(DEFAULT_CLIENT_CONTEXT.config)
 
@@ -26,6 +27,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 		deepMerge(palettes, client.palettes)
 		deepMerge(presets, client.presets)
 		deepMerge(deviceOptions, client.deviceOptions)
+		deepMerge(lightCapabilities, client.lightCapabilities)
 		deepMerge(live, client.live)
 		deepMerge(config, client.config)
 		connecting.value = false
@@ -55,6 +57,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 		palettes,
 		presets,
 		deviceOptions,
+		lightCapabilities,
 		live,
 		config,
 		onLiveLEDs,
