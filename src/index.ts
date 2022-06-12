@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted, Plugin, reactive, ref } from 'vue'
 import { WLEDClient, WLEDClientConfig, WLEDClientDeviceOptions, WLEDClientEffects, WLEDClientInfo, WLEDClientLightCapabilities, WLEDClientLive, WLEDClientLiveLEDs, WLEDClientPalettes, WLEDClientPresets, WLEDClientState } from 'wled-client'
 import { CLIENT_KEY, DEFAULT_CLIENT_CONTEXT } from './constants'
-import { VueWLEDClient } from './types'
+import { VueWLEDClient, WLEDClientLinkState } from './types'
 import { deepMerge } from './utils'
 
 
@@ -9,6 +9,14 @@ export * from './use-wled-client'
 export { CLIENT_KEY } from './constants'
 export function wledClientPlugin(client:WLEDClient):Plugin {
 	const connecting = ref(true)
+	const linkState = ref<WLEDClientLinkState>('loading')
+
+	client.on('error', () => linkState.value = 'error')
+	client.on('loading', () => linkState.value = 'loading')
+	client.on('success:http', () => linkState.value = 'http')
+	client.on('success:ws', () => linkState.value = 'ws')
+	client.on('open', () => linkState.value = 'ws')
+	client.on('close', () => linkState.value = 'http')
 
 	const state = reactive<WLEDClientState>(DEFAULT_CLIENT_CONTEXT.state)
 	const info = reactive<WLEDClientInfo>(DEFAULT_CLIENT_CONTEXT.info)
@@ -51,6 +59,7 @@ export function wledClientPlugin(client:WLEDClient):Plugin {
 
 	const client_api:VueWLEDClient = {
 		connecting,
+		linkState,
 		state,
 		info,
 		effects,

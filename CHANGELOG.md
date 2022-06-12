@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+- Add `linkState` ref which shows the last known state of the connection to the device; either `error`, `loading`, `http`, or `ws`
 
 ## [0.2.0]- 2022-06-07
 This major updates brings `vue-wled` up to date with WLED v0.13.1 and WLED Client v0.21.0.
