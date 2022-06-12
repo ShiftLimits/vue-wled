@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [0.3.0]- 2022-06-12
+
 ### Added
 - Add `linkState` ref which shows the last known state of the connection to the device; either `error`, `loading`, `http`, or `ws`
 
